@@ -126,6 +126,7 @@ local function openBoostMenu()
     if boostConfig.home then
         ToggleNuiFrame(true)
         SendReactMessage("setConfig", boostConfig.home)
+        SendReactMessage("setExtrasConfig", boostConfig.extras)
         SendReactMessage("setColors", script.colors)
     end
 end
@@ -183,6 +184,10 @@ RegisterNUICallback("setConfigBoost", function(data, cb)
     boostConfig.home.distance = (tonumber(data.distance) or 1.0) + 0.0
     boostConfig.home.shadows = (tonumber(data.shadows) or 5.0) + 0.0
     boostConfig.home.lights = (tonumber(data.lights) or 10.0) + 0.0
+    if data.carTexture then
+        boostConfig.home.carTexture = (tonumber(data.carTexture) or 0.75) + 0.0
+        vehicleOpt.VehicleOtimization()
+    end
 
     RopeDrawShadowEnabled(boostConfig.home.shadows == 5.0)
     CascadeShadowsSetEntityTrackerScale(boostConfig.home.shadows)

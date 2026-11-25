@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   FIVEM CEF NUI STRICT VIEWPORT & ANTI-BLACK-BOX RULES
+   CRITICAL: Never use backdrop-filter anywhere in this UI!
+   ========================================================================== */
+html, body {
+  position: absolute !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: rgba(0,0,0,0) !important;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none !important;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+/* ==========================================================================
+   UI/UX PRO MAX — OBSIDIAN & SAPPHIRE LIQUID GLASS (ZERO BACKDROP-FILTER)
+   Refined optical depth using layered black-to-deep-blue gradients,
+   1px specular top refraction borders, and subtle elevation shadows.
+   ========================================================================== */
+
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Main window chassis: deep obsidian black to midnight sapphire gradient */
+.glass-chassis {
+  background:
+    radial-gradient(65% 50% at 18% 0%, rgba(37, 99, 235, 0.16) 0%, rgba(15, 35, 71, 0.05) 55%, rgba(5, 8, 14, 0) 100%),
+    radial-gradient(55% 45% at 88% 100%, rgba(29, 78, 216, 0.12) 0%, rgba(5, 8, 14, 0) 70%),
+    linear-gradient(155deg, rgba(8, 13, 24, 0.97) 0%, rgba(5, 7, 13, 0.98) 52%, rgba(9, 16, 30, 0.97) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.16);
+  box-shadow:
+    0 36px 90px -12px rgba(0, 0, 0, 0.92),
+    0 0 1px 1px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.13),
+    inset 0 -1px 0 0 rgba(59, 130, 246, 0.1);
+}
+
+/* Elevated module surface */
+.glass-surface {
+  background:
+    linear-gradient(165deg, rgba(16, 25, 44, 0.92) 0%, rgba(9, 13, 23, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  box-shadow:
+    0 8px 20px -6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  transition:
+    background 220ms var(--ease-out-expo),
+    border-color 220ms var(--ease-out-expo),
+    box-shadow 220ms var(--ease-out-expo),
+    transform 220ms var(--ease-out-expo);
+}
+
+.glass-surface:hover {
+  background:
+    linear-gradient(165deg, rgba(20, 31, 56, 0.94) 0%, rgba(11, 16, 29, 0.96) 100%);
+  border-color: rgba(96, 165, 250, 0.24);
+  box-shadow:
+    0 12px 26px -6px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.13);
+}
+
+/* Active/Selected module surface */
+.glass-surface-active {
+  background:
+    radial-gradient(120% 100% at 0% 0%, rgba(37, 99, 235, 0.20) 0%, rgba(37, 99, 235, 0) 70%),
+    linear-gradient(165deg, rgba(18, 30, 56, 0.96) 0%, rgba(10, 16, 30, 0.97) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.38);
+  box-shadow:
+    0 10px 26px -6px rgba(0, 0, 0, 0.65),
+    0 0 24px -6px rgba(37, 99, 235, 0.28),
+    inset 0 1px 0 0 rgba(147, 197, 253, 0.22);
+}
+
+/* Recessed well / track / segmented container */
+.glass-well {
+  background: linear-gradient(180deg, rgba(4, 6, 11, 0.96) 0%, rgba(7, 11, 20, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.8),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Subtle pill control */
+.glass-control {
+  background: linear-gradient(180deg, rgba(17, 25, 42, 0.94) 0%, rgba(10, 15, 26, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transition: all 180ms var(--ease-out-expo);
+}
+
+.glass-control:hover {
+  background: linear-gradient(180deg, rgba(23, 35, 58, 0.95) 0%, rgba(13, 20, 35, 0.97) 100%);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+/* Primary sapphire button */
+.btn-sapphire {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  border: 1px solid rgba(147, 197, 253, 0.4);
+  box-shadow:
+    0 8px 20px -4px rgba(37, 99, 235, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition: all 200ms var(--ease-out-expo);
+}
+
+.btn-sapphire:hover {
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  box-shadow:
+    0 10px 26px -4px rgba(59, 130, 246, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  transform: translateY(-1px);
+}
+
+.btn-sapphire:active {
+  transform: translateY(0);
+}
+
+/* Top optical refraction hairline */
+.specular-edge {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(96, 165, 250, 0.48) 50%,
+    rgba(255, 255, 255, 0.08) 80%,
+    transparent 100%
+  );
+}
+
+/* ==========================================================================
+   PRECISION RANGE SLIDER (ALIGNED TRACK & THUMB)
+   ========================================================================== */
+.precision-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.precision-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  background: transparent;
+  border: none;
+}
+
+.precision-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 2px solid #3b82f6;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.75),
+    0 0 0 3px rgba(59, 130, 246, 0.18);
+  cursor: pointer;
+  transition: transform 160ms var(--ease-out-expo), box-shadow 160ms var(--ease-out-expo), border-color 160ms ease;
+}
+
+.precision-range::-webkit-slider-thumb:hover,
+.precision-range:active::-webkit-slider-thumb {
+  transform: scale(1.16);
+  border-color: #60a5fa;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.85),
+    0 0 0 5px rgba(59, 130, 246, 0.28),
+    0 0 14px rgba(59, 130, 246, 0.65);
+}
+
+/* ==========================================================================
+   FLUID MOTION & CHOREOGRAPHY
+   ========================================================================== */
+@keyframes chassisReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.965) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes viewTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-chassis {
+  animation: chassisReveal 320ms var(--ease-out-expo) forwards;
+}
+
+.animate-view {
+  animation: viewTransition 240ms var(--ease-out-expo) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-chassis,
+  .animate-view,
+  .glass-surface,
+  .btn-sapphire {
+    animation: none !important;
+    transition: none !important;
+  }
+}

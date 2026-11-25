@@ -19,8 +19,6 @@ server_scripts {
 }
 files {
   'interface/build/index.html',
-  'interface/build/index.css',
-  'interface/build/index.js',
   'interface/build/assets/*',
   'interface/build/*'
 }
