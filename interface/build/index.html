@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldeia Boost V2.4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="screen-overlay" id="screenOverlay" style="display: none;">
+    <div class="panel-container">
+      
+      <!-- TOP HEADER -->
+      <header class="panel-header">
+        <div class="header-left">
+          <div class="status-online">
+            <span class="status-dot"></span>
+            SISTEMA ONLINE
+          </div>
+          <h1 class="panel-title">ALDEIA BOOST <span class="version-tag">V2.4</span></h1>
+        </div>
+
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-label">FPS</span>
+            <span class="stat-value cyan" id="statFps">144</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">CPU</span>
+            <span class="stat-value" id="statCpu">24%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">GPU</span>
+            <span class="stat-value" id="statGpu">68%</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">RAM</span>
+            <span class="stat-value" id="statRam">8.2GB</span>
+          </div>
+        </div>
+
+        <button class="close-btn" id="btnClose" title="Fechar (ESC)">✕</button>
+      </header>
+
+      <!-- METRICS SUB-BAR -->
+      <div class="metrics-subbar">
+        <div class="metric-col">
+          <span class="metric-label">FRAME TIME</span>
+          <span class="metric-value" id="metricFrameTime">6.9 ms</span>
+        </div>
+        <div class="metric-col">
+          <span class="metric-label">FPS MÉDIO</span>
+          <span class="metric-value" id="metricFpsMedio">138.2</span>
+        </div>
+        <div class="metric-col">
+          <span class="metric-label">USO DE VRAM</span>
+          <span class="metric-value" id="metricVram">4.1 / 8 GB</span>
+        </div>
+        <div class="metric-col">
+          <span class="metric-label">EFICIÊNCIA</span>
+          <span class="metric-value cyan" id="metricEficiencia">Excelente</span>
+        </div>
+      </div>
+
+      <!-- MAIN BODY (SIDEBAR + CONTENT) -->
+      <div class="panel-body">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="panel-sidebar">
+          <div class="sidebar-section">
+            <span class="section-heading">NAVEGAÇÃO</span>
+            <nav class="nav-list">
+              <button class="nav-btn active" data-tab="graphics">
+                <i class="fa-solid fa-sliders"></i>
+                Configurações gráficas
+              </button>
+              <button class="nav-btn" data-tab="performance">
+                <i class="fa-solid fa-chart-line"></i>
+                Monitor de desempenho
+              </button>
+              <button class="nav-btn" data-tab="advanced">
+                <i class="fa-solid fa-desktop"></i>
+                Opções avançadas
+              </button>
+            </nav>
+          </div>
+
+          <div class="sidebar-section">
+            <span class="section-heading">PERFIS DO MOTOR</span>
+            <div class="presets-grid">
+              <button class="preset-btn" data-preset="baixo">BAIXO</button>
+              <button class="preset-btn" data-preset="medio">MÉDIO</button>
+              <button class="preset-btn active" data-preset="alto">ALTO</button>
+              <button class="preset-btn" data-preset="ultra">ULTRA</button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <main class="panel-content">
+
+          <!-- TAB 1: CONFIGURAÇÕES GRÁFICAS -->
+          <div class="tab-pane active" id="tab-graphics">
+            <div class="content-header">
+              <i class="fa-solid fa-sliders cyan-icon"></i>
+              <h2>CONFIGURAÇÕES GRÁFICAS</h2>
+            </div>
+
+            <!-- 2x2 SLIDERS GRID -->
+            <div class="sliders-grid">
+              
+              <!-- SLIDER 1: DISTÂNCIA -->
+              <div class="slider-card">
+                <div class="slider-card-header">
+                  <span class="slider-title">DISTÂNCIA DE RENDERIZAÇÃO</span>
+                  <span class="slider-val cyan" id="valDistance">2300 m</span>
+                </div>
+                <div class="slider-track-wrap">
+                  <input type="range" class="custom-slider" id="sliderDistance" min="500" max="3000" step="50" value="2300">
+                </div>
+                <div class="slider-limits">
+                  <span>500 M</span>
+                  <span>3000 M</span>
+                </div>
+              </div>
+
+              <!-- SLIDER 2: SOMBRAS -->
+              <div class="slider-card">
+                <div class="slider-card-header">
+                  <span class="slider-title">QUALIDADE DAS SOMBRAS</span>
+                  <span class="slider-val cyan" id="valShadows">Alta</span>
+                </div>
+                <div class="slider-track-wrap">
+                  <input type="range" class="custom-slider" id="sliderShadows" min="0" max="4" step="1" value="3">
+                </div>
+                <div class="slider-limits">
+                  <span>DESLIGADO</span>
+                  <span>ULTRA</span>
+                </div>
+              </div>
+
+              <!-- SLIDER 3: ILUMINAÇÃO VOLUMÉTRICA -->
+              <div class="slider-card">
+                <div class="slider-card-header">
+                  <span class="slider-title">ILUMINAÇÃO VOLUMÉTRICA</span>
+                  <span class="slider-val cyan" id="valLights">75%</span>
+                </div>
+                <div class="slider-track-wrap">
+                  <input type="range" class="custom-slider" id="sliderLights" min="0" max="100" step="5" value="75">
+                </div>
+                <div class="slider-limits">
+                  <span>BAIXA</span>
+                  <span>MÁXIMA</span>
+                </div>
+              </div>
+
+              <!-- SLIDER 4: QUALIDADE DOS REFLEXOS -->
+              <div class="slider-card">
+                <div class="slider-card-header">
+                  <span class="slider-title">QUALIDADE DOS REFLEXOS</span>
+                  <span class="slider-val cyan" id="valReflexes">62%</span>
+                </div>
+                <div class="slider-track-wrap">
+                  <input type="range" class="custom-slider" id="sliderReflexes" min="0" max="100" step="1" value="62">
+                </div>
+                <div class="slider-limits">
+                  <span>BAIXA</span>
+                  <span>ULTRA</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- FEATURE TOGGLE CARD -->
+            <div class="feature-card">
+              <div class="feature-info">
+                <span class="cyan-dot"></span>
+                <div class="feature-texts">
+                  <span class="feature-title">ORÇAMENTO ESTENDIDO DE TEXTURA</span>
+                  <span class="feature-desc" id="textureDesc">Alocação atual: 4.0 GB</span>
+                </div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggleTexture" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- TAB 2: MONITOR DE DESEMPENHO -->
+          <div class="tab-pane" id="tab-performance">
+            <div class="content-header">
+              <i class="fa-solid fa-chart-line cyan-icon"></i>
+              <h2>MONITOR DE DESEMPENHO</h2>
+            </div>
+            <div class="perf-cards-grid">
+              <div class="perf-metric-box">
+                <div class="perf-box-header">
+                  <span>ESTABILIDADE DE FPS</span>
+                  <span class="cyan">99.4%</span>
+                </div>
+                <div class="perf-bar-bg"><div class="perf-bar-fill" style="width: 99.4%;"></div></div>
+                <span class="perf-box-sub">Taxa de quadros consistente sem engasgos</span>
+              </div>
+              <div class="perf-metric-box">
+                <div class="perf-box-header">
+                  <span>USO DE MEMÓRIA VIRTUAL</span>
+                  <span class="cyan">52%</span>
+                </div>
+                <div class="perf-bar-bg"><div class="perf-bar-fill" style="width: 52%;"></div></div>
+                <span class="perf-box-sub">Memória de texturas otimizada para streaming</span>
+              </div>
+              <div class="perf-metric-box">
+                <div class="perf-box-header">
+                  <span>TEMPO DE LATÊNCIA GPU</span>
+                  <span class="cyan">4.2 ms</span>
+                </div>
+                <div class="perf-bar-bg"><div class="perf-bar-fill" style="width: 28%;"></div></div>
+                <span class="perf-box-sub">Tempo de renderização ultra-rápido</span>
+              </div>
+              <div class="perf-metric-box">
+                <div class="perf-box-header">
+                  <span>TEMPO DE RESPOSTA DO MOTOR</span>
+                  <span class="cyan">0.8 ms</span>
+                </div>
+                <div class="perf-bar-bg"><div class="perf-bar-fill" style="width: 15%;"></div></div>
+                <span class="perf-box-sub">Latência de input imperceptível</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: OPÇÕES AVANÇADAS -->
+          <div class="tab-pane" id="tab-advanced">
+            <div class="content-header">
+              <i class="fa-solid fa-desktop cyan-icon"></i>
+              <h2>OPÇÕES AVANÇADAS (PARÂMETROS EXTRAS)</h2>
+            </div>
+            <div class="advanced-list">
+              <div class="advanced-item">
+                <div class="advanced-info">
+                  <span class="advanced-title">DESABILITAR GOTAS DE CHUVA</span>
+                  <span class="advanced-desc">Ganho significativo de FPS durante tempestades</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="extraRain">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="advanced-item">
+                <div class="advanced-info">
+                  <span class="advanced-title">DESABILITAR EFEITO DE VENTO</span>
+                  <span class="advanced-desc">Reduz processamento de física e vegetação</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="extraWind">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="advanced-item">
+                <div class="advanced-info">
+                  <span class="advanced-title">LIMPAR SANGUE E DANO FÍSICO</span>
+                  <span class="advanced-desc">Limpa partículas de dano corporal em tiroteios</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="extraBlood">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="advanced-item">
+                <div class="advanced-info">
+                  <span class="advanced-title">ATIVAR TIMECYCLE CINEMA</span>
+                  <span class="advanced-desc">Altera o perfil de pós-processamento de luzes</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="extraTimecycle">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="advanced-item">
+                <div class="advanced-info">
+                  <span class="advanced-title">EXTRA FPS (BETA)</span>
+                  <span class="advanced-desc">Desabilita rotinas nativas desnecessárias para máximo ganho</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="extraFps">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+
+      <!-- FOOTER ACTION BAR -->
+      <footer class="panel-footer">
+        <button class="footer-btn reset-btn" id="btnReset">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+          REDEFINIR PADRÃO
+        </button>
+
+        <div class="footer-actions-right">
+          <button class="footer-btn cancel-btn" id="btnCancel">CANCELAR</button>
+          <button class="footer-btn apply-btn" id="btnApply">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            APLICAR ALTERAÇÕES
+          </button>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
